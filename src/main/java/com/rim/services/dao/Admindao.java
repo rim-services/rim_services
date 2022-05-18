@@ -1,6 +1,7 @@
 package com.rim.services.dao;
 
 import java.util.List;
+//import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,7 +9,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import com.rim.services.models.Admin;
-
+import javax.persistence.Query;
 public class Admindao {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ServicesUnit");
     EntityManager em = emf.createEntityManager();
@@ -46,21 +47,6 @@ public class Admindao {
 
      return em.find(Admin.class,id);
 
-    }
-
-
-   
-    public boolean validate(String userName, String password) {
-
-            String sql = "select u from Admin u  WHERE u.email =:userName and u.pass=:password";
-            TypedQuery <Admin> qr = em.createQuery(sql, Admin.class);
-
-
-            if (qr.getResultList() != null ) {
-                return true;
-            }
-
-        return false;
     }
 
 
