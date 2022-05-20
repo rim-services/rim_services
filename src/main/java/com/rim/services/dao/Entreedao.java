@@ -1,53 +1,57 @@
 package com.rim.services.dao;
 
 import java.util.List;
-//import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import com.rim.services.models.Admin;
-import javax.persistence.Query;
-public class Admindao {
+import com.rim.services.models.Entree;
+
+public class Entreedao {
+	
+	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ServicesUnit");
     EntityManager em = emf.createEntityManager();
-	public List<Admin> getAll() {
-        String sql = "select u from Admin u order by u.id desc ";
-        TypedQuery<Admin> qr = em.createQuery(sql, Admin.class);
+    
+    public List<Entree> getAll() {
+        String sql = "select u from Entree u order by u.id desc ";
+        TypedQuery<Entree> qr = em.createQuery(sql, Entree.class);
         return qr.getResultList();
     }
-    public Admin add(Admin admin) {
+    
+    
+    public Entree add(Entree entree) {
         em.getTransaction().begin();
-        em.persist(admin); 
+        em.persist(entree); 
         em.getTransaction().commit();
-        return admin;
+        return entree;
     }
-
-    public Admin update(Admin admin) {
+    
+    public Entree update(Entree entree) {
         System.out.println("here ");
         em.getTransaction().begin();
-        em.merge(admin);
+        em.merge(entree);
         em.getTransaction().commit();
-        return admin;
+        return entree;
     }
-
-    public boolean remove(Admin admin) {
+    public boolean remove(Entree entree) {
 
         em.getTransaction().begin();
 
-        em.remove(admin);
+        em.remove(entree);
 
         em.getTransaction().commit();
            return true;
     }
 
-    public Admin getById(Long id) {
+    public Entree getById(Long id) {
 
-     return em.find(Admin.class,id);
+     return em.find(Entree.class,id);
 
     }
+
 
 
 }

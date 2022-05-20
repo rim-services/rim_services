@@ -1,53 +1,55 @@
 package com.rim.services.dao;
-
 import java.util.List;
-//import java.util.UUID;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import com.rim.services.models.Admin;
-import javax.persistence.Query;
-public class Admindao {
+import com.rim.services.models.Stock;
+
+public class Stockdao {
+
+
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ServicesUnit");
     EntityManager em = emf.createEntityManager();
-	public List<Admin> getAll() {
-        String sql = "select u from Admin u order by u.id desc ";
-        TypedQuery<Admin> qr = em.createQuery(sql, Admin.class);
+	
+    
+    public List<Stock> getAll() {
+        String sql = "select u from Stock u order by u.id desc ";
+        TypedQuery<Stock> qr = em.createQuery(sql, Stock.class);
         return qr.getResultList();
     }
-    public Admin add(Admin admin) {
+    public Stock add(Stock stock) {
         em.getTransaction().begin();
-        em.persist(admin); 
+        em.persist(stock); 
         em.getTransaction().commit();
-        return admin;
+        return stock;
     }
 
-    public Admin update(Admin admin) {
+    public Stock update(Stock stock) {
         System.out.println("here ");
         em.getTransaction().begin();
-        em.merge(admin);
+        em.merge(stock);
         em.getTransaction().commit();
-        return admin;
+        return stock;
     }
 
-    public boolean remove(Admin admin) {
+    public boolean remove(Stock stock) {
 
         em.getTransaction().begin();
 
-        em.remove(admin);
+        em.remove(stock);
 
         em.getTransaction().commit();
            return true;
     }
 
-    public Admin getById(Long id) {
+    public Stock getById(Long id) {
 
-     return em.find(Admin.class,id);
+     return em.find(Stock.class,id);
 
     }
+
 
 
 }

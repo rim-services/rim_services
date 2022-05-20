@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="5.0">
   <display-name>services</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -22,5 +22,43 @@
     <servlet-name>JAX-RS API</servlet-name>
     <url-pattern>/RS/*</url-pattern>
   </servlet-mapping>
- 
+  <filter>
+    <display-name>LoginFilter</display-name>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.rim.services.resource.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/LoginFilter</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AcceuilClient</display-name>
+    <servlet-name>AcceuilClient</servlet-name>
+    <servlet-class>com.rim.services.resource.AcceuilClient</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AcceuilClient</servlet-name>
+    <url-pattern>/AcceuilClient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AcceuilFournisseur</display-name>
+    <servlet-name>AcceuilFournisseur</servlet-name>
+    <servlet-class>com.rim.services.resource.AcceuilFournisseur</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AcceuilFournisseur</servlet-name>
+    <url-pattern>/AcceuilFournisseur</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccueilAdmin</display-name>
+    <servlet-name>AccueilAdmin</servlet-name>
+    <servlet-class>com.rim.services.resource.AccueilAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccueilAdmin</servlet-name>
+    <url-pattern>/AccueilAdmin</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,53 +1,57 @@
 package com.rim.services.dao;
-
 import java.util.List;
-//import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import com.rim.services.models.Admin;
-import javax.persistence.Query;
-public class Admindao {
+import com.rim.services.models.Commande;
+
+
+public class Commandedao {
+
+
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ServicesUnit");
     EntityManager em = emf.createEntityManager();
-	public List<Admin> getAll() {
-        String sql = "select u from Admin u order by u.id desc ";
-        TypedQuery<Admin> qr = em.createQuery(sql, Admin.class);
+    
+	public List<Commande> getAll() {
+        String sql = "select u from  Commande u order by u.id desc ";
+        TypedQuery< Commande> qr = em.createQuery(sql,  Commande.class);
         return qr.getResultList();
     }
-    public Admin add(Admin admin) {
+    public  Commande add( Commande  commande) {
         em.getTransaction().begin();
-        em.persist(admin); 
+        em.persist(commande); 
         em.getTransaction().commit();
-        return admin;
+        return  commande;
     }
 
-    public Admin update(Admin admin) {
+    public  Commande update(Commande  commande) {
         System.out.println("here ");
         em.getTransaction().begin();
-        em.merge(admin);
+        em.merge(commande);
         em.getTransaction().commit();
-        return admin;
+        return  commande;
     }
 
-    public boolean remove(Admin admin) {
+    public boolean remove(Commande  commande) {
 
         em.getTransaction().begin();
 
-        em.remove(admin);
+        em.remove(commande);
 
         em.getTransaction().commit();
            return true;
     }
 
-    public Admin getById(Long id) {
+    public Commande getById(Long id) {
 
-     return em.find(Admin.class,id);
+     return em.find(Commande.class,id);
 
     }
 
 
+
 }
+

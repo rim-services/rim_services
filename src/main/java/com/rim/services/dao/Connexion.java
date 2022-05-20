@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Connexion {
 
-	public String url="jdbc:mysql://localhost:3308/rimservices";
+	public String url="jdbc:mysql://localhost:3308/gestionapprovisionnement";
 	private static String driver="com.mysql.cj.jdbc.Driver";
 	private static Connection con=null;
 	Connexion(){
