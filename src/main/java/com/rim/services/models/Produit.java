@@ -1,13 +1,7 @@
 package com.rim.services.models;
 
+import javax.persistence.*;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 
 @Entity
@@ -19,14 +13,25 @@ public class Produit {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private Long id;
+
 	@Column(name="code")
     private String code;
+
 	@Column(name="libelle")
     private String libelle;
+
 	@Column(name="prix")
     private float prix;
+
 	@Column(name="date_Expiration")
     private Date date_Expiration;
+
+	@Column(name="quantite")
+	private int quantite;
+
+	@Column(name="id_stock")
+	private int id_stock;
+
 	
 	
 	
@@ -34,14 +39,18 @@ public class Produit {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Produit(Long id, String code, String libelle, float prix, Date date_Expiration) {
-		super();
+
+
+	public Produit(Long id, String code, String libelle, float prix, Date date_Expiration, int quantite, int id_stock) {
 		this.id = id;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
 		this.date_Expiration = date_Expiration;
+		this.quantite = quantite;
+		this.id_stock = id_stock;
 	}
+
 	public Long getId() {
 		return id;
 	}
@@ -72,6 +81,20 @@ public class Produit {
 	public void setDate_Expiration(Date date_Expiration) {
 		this.date_Expiration = date_Expiration;
 	}
-	
 
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+	public int getId_stock() {
+		return id_stock;
+	}
+
+	public void setId_stock(int id_stock) {
+		this.id_stock = id_stock;
+	}
 }

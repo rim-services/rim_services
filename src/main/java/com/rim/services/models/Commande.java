@@ -1,13 +1,7 @@
 package com.rim.services.models;
 
+import javax.persistence.*;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 @Entity
 @Table(name = "commande")
 public class Commande {
@@ -20,9 +14,7 @@ public class Commande {
  	@Column(name = "id_fournisseur")
     private Long id_fournisseur;
  
- 	@Column(name = "id_admin")
-    private Long id_admin;
- 	
+
  	@Column(name = "date")
     private Date date;
  	
@@ -32,11 +24,10 @@ public class Commande {
 	public Commande() {
 		
 	}
-	public Commande(Long id,Long id_fournisseur, Long id_admin,  Date date,String etat) {
+	public Commande(Long id,Long id_fournisseur,   Date date,String etat) {
 		super();
 		this.id = id;
 		this.id_fournisseur = id_fournisseur;
-		this.id_admin =id_admin;
 		this.date = date;
 		this.etat = etat;
 	}
@@ -57,12 +48,7 @@ public class Commande {
 	public void setId_fournisseur(Long id_fournisseur) {
 		this.id_fournisseur = id_fournisseur;
 	}
-	public Long getId_admin() {
-		return id_admin;
-	}
-	public void setId_admin(Long id_admin) {
-		this.id_admin = id_admin;
-	}
+
 	public Date getDate() {
 		return date;
 	}
