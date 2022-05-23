@@ -1,8 +1,6 @@
 package com.rim.services.models;
 
-
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "entree_detail")

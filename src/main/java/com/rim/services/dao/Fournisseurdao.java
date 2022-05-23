@@ -1,12 +1,12 @@
 package com.rim.services.dao;
-import java.util.List;
+
+import com.rim.services.models.Fournisseur;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-
-import com.rim.services.models.Fournisseur;
+import java.util.List;
 
 public class Fournisseurdao {
 
@@ -44,8 +44,10 @@ public class Fournisseurdao {
 
     }
 	public List<Fournisseur> getAll() {
-		 String sql = "select u from Fournisseur u order by u.id desc ";
-	        TypedQuery<Fournisseur> qr = em.createQuery(sql, Fournisseur.class);
+		 String sql = "select f from Fournisseur f  ";
+
+
+        TypedQuery<Fournisseur> qr = em.createQuery(sql, Fournisseur.class);
 	        return qr.getResultList();
 	}
 

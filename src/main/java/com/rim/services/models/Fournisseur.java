@@ -1,14 +1,10 @@
 package com.rim.services.models;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "fournisseurs")
-
 public class Fournisseur {
  	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -23,6 +19,15 @@ public class Fournisseur {
  	@Column(name = "pass")
     private String pass;
  	
+ 	@OneToMany
+    @JoinColumn(name="id_fournisseur")
+ 	private List<Commande> commandes;
+ 	
+//	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JoinColumn(name = "id_fournisseur", referencedColumnName = "id")
+//	private List<Commande> commandes;
+
+
    public Fournisseur() {
 		
 	}
@@ -71,5 +76,13 @@ public class Fournisseur {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+	
+	public List<Commande> getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(List<Commande> commandes) {
+		this.commandes = commandes;
 	}
 }
