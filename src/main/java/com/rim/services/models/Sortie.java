@@ -2,12 +2,15 @@ package com.rim.services.models;
 
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,8 +28,10 @@ public class Sortie {
     private String description;
 	
 	
-	
-	
+	/*@OneToMany
+    @JoinColumn(name="id_sortie")
+ 	private List<Sortie_detail> sortie_detail;
+	*/
 	public Sortie() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -55,6 +60,8 @@ public class Sortie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	
 	
 	
 }

@@ -2,6 +2,8 @@ package com.rim.services.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "entree_detail")
 public class Entree_detail {
@@ -11,11 +13,11 @@ public class Entree_detail {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "id_produit")
-    private Long id_produit;
+   // @Column(name = "id_produit")
+    //private Long id_produit;
 
-    @Column(name = "id_entree")
-    private Long id_entree;
+   // @Column(name = "id_entree")
+    //private Long id_entree;
 
     @Column(name = "quantite")
     private Long quantite;
@@ -23,15 +25,23 @@ public class Entree_detail {
     @Column(name="pu")
     private float pu;
 
-
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "id_entree", nullable=false, updatable=false)
+	@JsonManagedReference
+	private  Entree entree;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "id_produit", nullable=false, updatable=false)
+	@JsonManagedReference
+	private  Produit produit;
 
     public Entree_detail() {
     }
 
-    public Entree_detail(Long id, Long id_produit, Long id_entree, Long quantite, float pu) {
+    public Entree_detail(Long id, Produit produit, Entree entree, Long quantite, float pu) {
         this.id = id;
-        this.id_produit = id_produit;
-        this.id_entree = id_entree;
+        this.produit = produit;
+        this.entree = entree;
         this.quantite = quantite;
         this.pu=pu;
     }
@@ -44,20 +54,20 @@ public class Entree_detail {
         this.id = id;
     }
 
-    public Long getId_produit() {
-        return id_produit;
+    public Produit getId_produit() {
+        return produit;
     }
 
-    public void setId_produit(Long id_produit) {
-        this.id_produit = id_produit;
+    public void setId_produit(Produit produit) {
+        this.produit = produit;
     }
 
-    public Long getId_entree() {
-        return id_entree;
+    public Entree getId_entree() {
+        return entree;
     }
 
-    public void setId_entree(Long id_entree) {
-        this.id_entree = id_entree;
+    public void setId_entree(Entree Entree) {
+        this.entree = Entree;
     }
 
     public Long getQuantite() {
