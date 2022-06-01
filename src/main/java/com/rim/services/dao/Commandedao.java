@@ -1,22 +1,23 @@
 package com.rim.services.dao;
-import java.util.List;
+
+import com.rim.services.models.Commande;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-
-import com.rim.services.models.Commande;
+import java.util.List;
 
 
 public class Commandedao {
-
 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ServicesUnit");
     EntityManager em = emf.createEntityManager();
     
 	public List<Commande> getAll() {
-        String sql = "select u from  Commande u order by u.id desc ";
+        String sql = "select a from Commande as a ";
+        
+        
         TypedQuery< Commande> qr = em.createQuery(sql,  Commande.class);
         return qr.getResultList();
     }

@@ -36,20 +36,20 @@ const renderAdmins =(admins)=>{
         // mode:'cors',
         
           method:'POST',
-          headers:{
-              Accept:'application/json, text/plain',
-              'Content-Type':'application/json;charset=UTF-8',
-              "Access-Control-Allow-Origin": "*",
-              'Content-Type': 'application/json',
+          // headers:{
+          //     Accept:'application/json, text/plain',
+          //     'Content-Type':'application/json;charset=UTF-8',
+          //     "Access-Control-Allow-Origin": "*",
+          //     'Content-Type': 'application/json',
               
-          }, 
-          mode: 'no-cors',  
-          body:JSON.stringify({
-            nom: nom.value,
-            prenom:prenom.value,
-            email:email.value,
-            pass:pass.value
-          })
+          // }, 
+          // mode: 'no-cors',  
+          // body:JSON.stringify({
+          //   nom: nom.value,
+          //   prenom:prenom.value,
+          //   email:email.value,
+          //   pass:pass.value
+          // })
         })
         .then(res => res.json())
         // .then(data=>{
