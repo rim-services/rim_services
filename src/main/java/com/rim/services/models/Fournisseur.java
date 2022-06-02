@@ -20,9 +20,7 @@ public class Fournisseur {
  	@Column(name = "pass")
     private String pass;
  	
- 	@OneToMany
-    @JoinColumn(name="id_fournisseur")
- 	private List<Commande> commandes;
+ 	
  	
 //	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 //	@JoinColumn(name = "id_fournisseur", referencedColumnName = "id")
@@ -79,11 +77,5 @@ public class Fournisseur {
 		this.pass = pass;
 	}
 	
-	public List<Commande> getCommandes() {
-		return commandes;
-	}
-
-	public void setCommandes(List<Commande> commandes) {
-		this.commandes = commandes;
-	}
+	
 }

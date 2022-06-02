@@ -1,7 +1,11 @@
 package com.rim.services.models;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -29,12 +33,52 @@ public class Produit {
 	@Column(name="quantite")
 	private int quantite;
 
-	@Column(name="id_stock")
-	private int id_stock;
+	//@Column(name="id_stock")
+	//private int id_stock;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "id_stock", nullable=false, updatable=false)
+	@JsonManagedReference
+	private  Stock stock;
 
 	
+	/*@OneToMany
+    @JoinColumn(name="id_entree")
+ 	private List<Entree_detail> entree_detail;
+ 	@OneToMany
+    @JoinColumn(name="id_sortie")
+ 	private List<Sortie_detail> sortie_detail;
 	
-	
+	public List<Sortie_detail> getSortie_detail() {
+		return sortie_detail;
+	}*/
+
+
+	/*public void setSortie_detail(List<Sortie_detail> sortie_detail) {
+		this.sortie_detail = sortie_detail;
+	}
+
+
+	public List<Entree_detail> getEntree_detail() {
+		return entree_detail;
+	}
+
+
+	public void setEntree_detail(List<Entree_detail> entree_detail) {
+		this.entree_detail = entree_detail;
+	}*/
+
+
+	public Stock getStock() {
+		return stock;
+	}
+
+
+	public void setStock(Stock stock) {
+		this.stock = stock;
+	}
+
+
 	public Produit() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -48,7 +92,7 @@ public class Produit {
 		this.prix = prix;
 		this.date_Expiration = date_Expiration;
 		this.quantite = quantite;
-		this.id_stock = id_stock;
+		this.stock = stock;
 	}
 
 	public Long getId() {
@@ -90,11 +134,5 @@ public class Produit {
 		this.quantite = quantite;
 	}
 
-	public int getId_stock() {
-		return id_stock;
-	}
-
-	public void setId_stock(int id_stock) {
-		this.id_stock = id_stock;
-	}
+	
 }

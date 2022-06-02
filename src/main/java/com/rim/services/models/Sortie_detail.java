@@ -3,6 +3,8 @@ package com.rim.services.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "sortie_detail")
@@ -13,11 +15,11 @@ public class Sortie_detail {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "id_produit")
-    private Long id_produit;
+   // @Column(name = "id_produit")
+    //private Long id_produit;
 
-    @Column(name = "id_sortie")
-    private Long id_sortie;
+   // @Column(name = "id_sortie")
+   // private Long id_sortie;
 
     @Column(name = "quantite")
     private Long quantite;
@@ -25,15 +27,39 @@ public class Sortie_detail {
     @Column(name="pu")
     private float pu;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "id_sortie ", nullable=false, updatable=false)
+	@JsonManagedReference
+	private  Sortie  sortie ;
+	
+	public Sortie getSortie() {
+		return sortie;
+	}
 
+	public void setSortie(Sortie sortie) {
+		this.sortie = sortie;
+	}
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "id_produit", nullable=false, updatable=false)
+	@JsonManagedReference
+	private  Produit produit;
 
     public Sortie_detail() {
     }
 
-    public Sortie_detail(Long id, Long id_produit, Long id_sortie, Long quantite, float pu) {
+    public Sortie_detail(Long id, Sortie sortie, Produit produit, Long quantite, float pu) {
         this.id = id;
-        this.id_produit = id_produit;
-        this.id_sortie = id_sortie;
+        this.sortie = sortie;
+        this.produit = produit;
         this.quantite = quantite;
         this.pu=pu;
     }
@@ -46,21 +72,8 @@ public class Sortie_detail {
         this.id = id;
     }
 
-    public Long getId_produit() {
-        return id_produit;
-    }
-
-    public void setId_produit(Long id_produit) {
-        this.id_produit = id_produit;
-    }
-
-    public Long getId_sortie() {
-        return id_sortie;
-    }
-
-    public void setId_sortie(Long id_sortie) {
-        this.id_sortie = id_sortie;
-    }
+ 
+   
 
     public Long getQuantite() {
         return quantite;
