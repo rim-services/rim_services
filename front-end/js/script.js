@@ -1,6 +1,6 @@
 let temp;
 let h;
-const addAdminForm = document.querySelector('.add-admin-form');
+
 const table = document.querySelector('.table');
 // let url="http://localhost:8088/services/RS/admin";
 let url='http://localhost:8080/services_war/RS/admin';
@@ -26,61 +26,45 @@ const renderAdmins =(admins)=>{
       table.innerHTML=html;
  }
  
-    
     fetch(url) 
       .then(res => res.json())
       .then(data=>renderAdmins(data))
-
+  const addAdminForm = document.querySelector(".add-admin-form");
  addAdminForm.addEventListener('submit',(e)=>{
         e.preventDefault();
         console.log(nom.value)  
-        fetch(url, {
-          Method: 'POST',
-          Headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-          },
-          Body: 
+        console.log(prenom.value) 
+        console.log(email.value) 
+        console.log(pass.value) 
+        fetch(url,{
+          method:'POST',
           
-          JSON.stringify({
-                 nom: nom.value,
-                 prenom: prenom.value,
-                 email: email.value,
-                 pass: pass.value
-               }),
-          Cache: 'default'
+          // mode: 'cors',  
+          body: JSON.stringify({
+            email: email.value,
+            nom: nom.value,
+            pass: pass.value,
+            prenom: prenom.value
+          }),
+
+          headers:{
+            'Accept':'application/json',
+            'Content-Type':'application/json; charset=UTF-8',
+            // "Access-Control-Allow-Origin": "*",
+        }
         })
-
-        // fetch(url,{
-        // mode:'cors',
-          // method:'POST',
-          // headers:{
-          //     Accept:'application/json, text/plain',
-          //     'Content-Type':'application/json',
-          //     "Access-Control-Allow-Origin": "*",
-          //     'Content-Type': 'application/json',
-
-
-              //li kntu m3dlin
-              // Accept:'application/json, text/plain',
-              // 'Content-Type':'application/json; charset=UTF-8',
-              // "Access-Control-Allow-Origin": "*",
-              // 'Content-Type': 'application/json',
-        //   }, 
-        //   mode: 'cors',  
-        //   body: JSON.stringify({
-        //     nom: nom.value,
-        //     prenom: prenom.value,
-        //     email: email.value,
-        //     pass: pass.value
-        //   })
-        // });
+        // Converting to JSON
+        .then(response => response.json())
+        
+        // Displaying results to console
+        .then(json => console.log(json))
+        .catch(console.error);
         // .then(res => res.json())
 
         // .then(data=>{
         //   const dataArr=[];
         //   dataArr.push(data);
-        //  // renderAdmins(dataArr);
+        //  renderAdmins(dataArr);
         // })      
       },
     
