@@ -2,7 +2,9 @@ let temp;
 let h;
 const addAdminForm = document.querySelector('.add-admin-form');
 const table = document.querySelector('.table');
-let url="http://localhost:8088/services/RS/admin";
+// let url="http://localhost:8088/services/RS/admin";
+let url='http://localhost:8080/services_war/RS/admin';
+
 let nom=document.getElementById("nom");
 let prenom=document.getElementById("prenom");
 let email= document.getElementById("email");
@@ -31,27 +33,50 @@ const renderAdmins =(admins)=>{
 
  addAdminForm.addEventListener('submit',(e)=>{
         e.preventDefault();
-        console.log(nom.value)       
-        fetch(url,{
+        console.log(nom.value)  
+        fetch(url, {
+          Method: 'POST',
+          Headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+          },
+          Body: 
+          
+          JSON.stringify({
+                 nom: nom.value,
+                 prenom: prenom.value,
+                 email: email.value,
+                 pass: pass.value
+               }),
+          Cache: 'default'
+        })
+
+        // fetch(url,{
         // mode:'cors',
-        
-          method:'POST',
+          // method:'POST',
           // headers:{
           //     Accept:'application/json, text/plain',
-          //     'Content-Type':'application/json;charset=UTF-8',
+          //     'Content-Type':'application/json',
           //     "Access-Control-Allow-Origin": "*",
           //     'Content-Type': 'application/json',
-              
-          // }, 
-          // mode: 'no-cors',  
-          // body:JSON.stringify({
-          //   nom: nom.value,
-          //   prenom:prenom.value,
-          //   email:email.value,
-          //   pass:pass.value
-          // })
-        })
-        .then(res => res.json())
+
+
+              //li kntu m3dlin
+              // Accept:'application/json, text/plain',
+              // 'Content-Type':'application/json; charset=UTF-8',
+              // "Access-Control-Allow-Origin": "*",
+              // 'Content-Type': 'application/json',
+        //   }, 
+        //   mode: 'cors',  
+        //   body: JSON.stringify({
+        //     nom: nom.value,
+        //     prenom: prenom.value,
+        //     email: email.value,
+        //     pass: pass.value
+        //   })
+        // });
+        // .then(res => res.json())
+
         // .then(data=>{
         //   const dataArr=[];
         //   dataArr.push(data);
@@ -59,4 +84,4 @@ const renderAdmins =(admins)=>{
         // })      
       },
     
-)
+);

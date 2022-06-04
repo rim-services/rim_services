@@ -1,7 +1,6 @@
 package com.rim.services.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "fournisseurs")
