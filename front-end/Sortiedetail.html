@@ -94,7 +94,7 @@
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0">Muhammed</h6>
-                        <span>Admin</span>
+                        <span>sortie_detail</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -231,10 +231,13 @@
           <table id="fresh-table" class="table">
             <thead>
               <th data-field="id">ID</th>
-              <th data-field="name" data-sortable="true">Nom</th>
-              <th data-field="salary" data-sortable="true">Prenom</th>
-              <th data-field="country" data-sortable="true">Email</th>
-             
+              <th data-field="id" data-sortable="true">ID produit</th>
+              <th data-field="id" data-sortable="true">ID sortie</th>
+              <th data-field="quantite" data-sortable="true">quantite</th>
+              <th data-field="PU" data-sortable="true">PU</th>
+              
+           
+              
               <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
             </thead>
             <tbody id="table">
@@ -250,27 +253,36 @@
                 <br> <br>  <br>
                 <br>  <br> 
                 
-                <form class="add-admin-form" >
+                <form class="add-sortie_detail-form" >
                     <div class="container-fluid pt-4 px-4">
                         <div class="form-floating mb-3">
-                          <div id="modal-footer"><a href="file:///C:/Users/HP/rim_services/front-end/blank.html" class="modal-close"><span class ="close"><span class=" glyphicon glyphicon-remove"></span>close</span> </a></div> </div> 
-                            <input type="text" class="form-control" id="nom" placeholder="Nom">
-                            <label for="floatingText">Nom</label>
+                          <div id="modal-footer"><a href="" class="modal-close"><span class ="close"><span class=" glyphicon glyphicon-remove"></span>close</span> </a></div> </div> 
+                          <div class="form-floating mb-3">
+                            <label for="pet-select">ID produit</label>
+                            <select name="pets" id="produit_id">
+                            <option class="produit_id" >--Please choose an option--</option>
+                            </select>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="prenom" placeholder="Prenom">
-                            <label for="floatingText">Prenom</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
                         </div>
                        
-                        <div><input type="submit" id ="submit" name="submit" value="Create" class="btn btn-primary py-3 w-100 mb-4"><a href="file:///C:/Users/HP/rim_services/front-end/blank.html" class="modal-close"></a>Ajouter</a></div>
+                        <div class="form-floating mb-3">
+                            <label for="pet-select">ID sortie</label>
+                            <select name="pets" id="sortie_id">
+                            <option class="sortie_id" >--Please choose an option--</option>
+                            </select>
+                        </div>
+                       
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="quantite" placeholder="quantite">
+                            <label >quantite</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="pu" placeholder="PU">
+                            <label >PU</label>
+                        </div>
+                        
+                       
+                        <div><input type="submit" id ="submit" name="submit" value="Create" class="btn btn-primary py-3 w-100 mb-4"></div>
                     </form>
                     </div>
                 </div>
@@ -402,6 +414,6 @@
  
      <!-- Template Javascript -->
      <script src="js/main.js"></script>
-     <script src="js/script.js"></script>
+     <script src="js/scriptSortiedetail.js"></script>
 
 </html>

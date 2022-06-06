@@ -232,9 +232,8 @@
             <thead>
               <th data-field="id">ID</th>
               <th data-field="name" data-sortable="true">Nom</th>
-              <th data-field="salary" data-sortable="true">Prenom</th>
-              <th data-field="country" data-sortable="true">Email</th>
-             
+              <th data-field="localisation" data-sortable="true">localisation</th>
+           
               <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
             </thead>
             <tbody id="table">
@@ -250,27 +249,20 @@
                 <br> <br>  <br>
                 <br>  <br> 
                 
-                <form class="add-admin-form" >
+                <form class="add-Stock-form" >
                     <div class="container-fluid pt-4 px-4">
                         <div class="form-floating mb-3">
-                          <div id="modal-footer"><a href="file:///C:/Users/HP/rim_services/front-end/blank.html" class="modal-close"><span class ="close"><span class=" glyphicon glyphicon-remove"></span>close</span> </a></div> </div> 
+                          <div id="modal-footer"><span class ="close"><span class=" glyphicon glyphicon-remove"></span>close</span> </a></div> </div> 
                             <input type="text" class="form-control" id="nom" placeholder="Nom">
                             <label for="floatingText">Nom</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="prenom" placeholder="Prenom">
-                            <label for="floatingText">Prenom</label>
+                            <input type="text" class="form-control" id="localisation" placeholder="localisation">
+                            <label for="floatingText">localisation</label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
+                        
                        
-                        <div><input type="submit" id ="submit" name="submit" value="Create" class="btn btn-primary py-3 w-100 mb-4"><a href="file:///C:/Users/HP/rim_services/front-end/blank.html" class="modal-close"></a>Ajouter</a></div>
+                        <div><input type="submit" id ="submit" name="submit" value="Create" class="btn btn-primary py-3 w-100 mb-4">Ajouter</div>
                     </form>
                     </div>
                 </div>
@@ -402,6 +394,6 @@
  
      <!-- Template Javascript -->
      <script src="js/main.js"></script>
-     <script src="js/script.js"></script>
+     <script src="js/scriptStock.js"></script>
 
 </html>

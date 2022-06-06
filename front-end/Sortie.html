@@ -94,7 +94,7 @@
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0">Muhammed</h6>
-                        <span>Admin</span>
+                        <span>sortie</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -231,9 +231,9 @@
           <table id="fresh-table" class="table">
             <thead>
               <th data-field="id">ID</th>
-              <th data-field="name" data-sortable="true">Nom</th>
-              <th data-field="salary" data-sortable="true">Prenom</th>
-              <th data-field="country" data-sortable="true">Email</th>
+              <th data-field="name" data-sortable="true">Date</th>
+              <th data-field="description" data-sortable="true">description</th>
+              
              
               <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
             </thead>
@@ -250,27 +250,19 @@
                 <br> <br>  <br>
                 <br>  <br> 
                 
-                <form class="add-admin-form" >
+                <form class="add-sortie-form" >
                     <div class="container-fluid pt-4 px-4">
                         <div class="form-floating mb-3">
-                          <div id="modal-footer"><a href="file:///C:/Users/HP/rim_services/front-end/blank.html" class="modal-close"><span class ="close"><span class=" glyphicon glyphicon-remove"></span>close</span> </a></div> </div> 
-                            <input type="text" class="form-control" id="nom" placeholder="Nom">
-                            <label for="floatingText">Nom</label>
+                          <div id="modal-footer"><span class ="close"><span class=" glyphicon glyphicon-remove"></span>close</span></div> </div> 
+                            <input type="datetime-local" class="form-control" id="date" placeholder="date">
+                            <label for="floatingText">date</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="prenom" placeholder="Prenom">
-                            <label for="floatingText">Prenom</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
+                            <input type="text" class="form-control" id="description" placeholder="description">
+                            <label for="floatingText">description</label>
                         </div>
                        
-                        <div><input type="submit" id ="submit" name="submit" value="Create" class="btn btn-primary py-3 w-100 mb-4"><a href="file:///C:/Users/HP/rim_services/front-end/blank.html" class="modal-close"></a>Ajouter</a></div>
+                        <div><input type="submit" id ="submit" name="submit" value="Create" class="btn btn-primary py-3 w-100 mb-4"></div>
                     </form>
                     </div>
                 </div>
@@ -402,6 +394,6 @@
  
      <!-- Template Javascript -->
      <script src="js/main.js"></script>
-     <script src="js/script.js"></script>
+     <script src="js/scriptSortie.js"></script>
 
 </html>

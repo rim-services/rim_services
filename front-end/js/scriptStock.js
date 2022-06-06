@@ -2,16 +2,15 @@ let temp;
 const s=0;
 let h;
 let mod='create';
-const addAdminForm = document.querySelector(".add-admin-form");
-//const editAdminForm = document.querySelector(".add-admin-form");
+const addStockForm = document.querySelector(".add-Stock-form");
+//const editStockForm = document.querySelector(".add-Stock-form");
 const table = document.querySelector('.table');
-// let url="http://localhost:8088/services/RS/admin";
-let url='http://localhost:2525/services/RS/admin';
+// let url="http://localhost:8088/services/RS/Stock";
+let url='http://localhost:2525/services/RS/stock';
 
+let localisation=document.getElementById("localisation");
 let nom=document.getElementById("nom");
-let prenom=document.getElementById("prenom");
-let email= document.getElementById("email");
-let pass=document.getElementById("password");
+
 
 
 
@@ -21,17 +20,16 @@ span.onclick = function (){
 }
 
 
-const renderAdmins =(admins)=>{
+const renderStocks =(stocks)=>{
   let  html='';  
  
-    admins.forEach(admin=>{
-  h=admin.id;
+    stocks.forEach(stock=>{
+  h=stock.id;
   html+='<tr>';
-  html+='<td>'+admin.id+'</td>';
-  html+='<td>'+admin.nom+'</td>';
-  html+='<td>'+admin.prenom+'</td>';
-  html+='<td>'+admin.email+'</td>';
-  html+='<td> <a  href="#modal"  onclick="updateData('+admin.id+')"><i class="fas fa-edit" style="font-size:18px;color:rgb(90, 168, 245)"></i></a>&emsp;<a   id="delete"  onclick="DeleteData('+admin.id+')"> <i class="fa fa-trash" style="font-size:18px;color:red"></i></a></td>';
+  html+='<td>'+stock.id+'</td>';
+  html+='<td>'+stock.nom+'</td>';
+  html+='<td>'+stock.localisation+'</td>';
+  html+='<td> <a  href="#modal"  onclick="updateData('+stock.id+')"><i class="fas fa-edit" style="font-size:18px;color:rgb(90, 168, 245)"></i></a>&emsp;<a   id="delete"  onclick="DeleteData('+stock.id+')"> <i class="fa fa-trash" style="font-size:18px;color:red"></i></a></td>';
   html+='</tr>';
 
 })
@@ -40,7 +38,7 @@ const renderAdmins =(admins)=>{
  
     fetch(url) 
       .then(res => res.json())
-      .then(data=>renderAdmins(data))
+      .then(data=>renderStocks(data))
  
 
 // table.addEventListener('click',(e)=>{
@@ -62,17 +60,17 @@ function onFormSubmit() {
 
 }
 if(s==0){
-  addAdminForm.addEventListener('submit',(e)=>{
+  addStockForm.addEventListener('submit',(e)=>{
     e.preventDefault();
     fetch(url,{
       method:'POST',
       
       // mode: 'cors',  
       body: JSON.stringify({
-        email: email.value,
-        nom: nom.value,
-        pass: pass.value,
-        prenom: prenom.value
+        nom:nom.value,
+        localisation:localisation.value
+        // pass: pass.value,
+       
       }),
 
       headers:{
@@ -91,7 +89,7 @@ if(s==0){
 );
 }
 else{
-  addAdminForm.addEventListener('submit',(e)=>{
+  addStockForm.addEventListener('submit',(e)=>{
     e.preventDefault();
   fetch(`${url}/${id}`,{
     method:'PUT',
@@ -103,9 +101,9 @@ else{
     body: JSON.stringify({
   
       nom: nom.value,
-      prenom: prenom.value,
+      localisation: localisation.value
      // pass: pass.value,
-      email: email.value
+     
       
     }),
   }) 
@@ -123,15 +121,15 @@ function updateData(id){
   .then(res => res.json())
   .then(data=>{
     nom.value=data.nom,
-    prenom.value=data.prenom,
-    email.value=data.email
+    localisation.value=data.localisation
+    
   })
   document.getElementById("submit").value ='Update';
   mod='update';
 
 }
 function DeleteData(id) {
-  if (confirm('Vous voullez vraiment supprimer se pernonne?')) {
+  if (confirm('Vous voullez vraiment supprimer!')) {
     fetch(`${url}/${id}`,{
       method:'DELete',
 

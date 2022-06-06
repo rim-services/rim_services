@@ -2,16 +2,15 @@ let temp;
 const s=0;
 let h;
 let mod='create';
-const addAdminForm = document.querySelector(".add-admin-form");
-//const editAdminForm = document.querySelector(".add-admin-form");
+const addSortieForm = document.querySelector(".add-Sortie-form");
+//const editSortieForm = document.querySelector(".add-Sortie-form");
 const table = document.querySelector('.table');
-// let url="http://localhost:8088/services/RS/admin";
-let url='http://localhost:2525/services/RS/admin';
+// let url="http://localhost:8088/services/RS/Sortie";
+let url='http://localhost:2525/services/RS/Sortie';
 
-let nom=document.getElementById("nom");
-let prenom=document.getElementById("prenom");
-let email= document.getElementById("email");
-let pass=document.getElementById("password");
+let date=document.getElementById("date");
+let description=document.getElementById("description");
+
 
 
 
@@ -21,17 +20,16 @@ span.onclick = function (){
 }
 
 
-const renderAdmins =(admins)=>{
+const renderSorties =(Sorties)=>{
   let  html='';  
  
-    admins.forEach(admin=>{
-  h=admin.id;
+    Sorties.forEach(Sortie=>{
+  h=Sortie.id;
   html+='<tr>';
-  html+='<td>'+admin.id+'</td>';
-  html+='<td>'+admin.nom+'</td>';
-  html+='<td>'+admin.prenom+'</td>';
-  html+='<td>'+admin.email+'</td>';
-  html+='<td> <a  href="#modal"  onclick="updateData('+admin.id+')"><i class="fas fa-edit" style="font-size:18px;color:rgb(90, 168, 245)"></i></a>&emsp;<a   id="delete"  onclick="DeleteData('+admin.id+')"> <i class="fa fa-trash" style="font-size:18px;color:red"></i></a></td>';
+  html+='<td>'+Sortie.id+'</td>';
+  html+='<td>'+Sortie.date+'</td>';
+  html+='<td>'+Sortie.description+'</td>';
+  html+='<td> <a  href="#modal"  onclick="updateData('+Sortie.id+')"><i class="fas fa-edit" style="font-size:18px;color:rgb(90, 168, 245)"></i></a>&emsp;<a   id="delete"  onclick="DeleteData('+Sortie.id+')"> <i class="fa fa-trash" style="font-size:18px;color:red"></i></a></td>';
   html+='</tr>';
 
 })
@@ -40,7 +38,7 @@ const renderAdmins =(admins)=>{
  
     fetch(url) 
       .then(res => res.json())
-      .then(data=>renderAdmins(data))
+      .then(data=>renderSorties(data))
  
 
 // table.addEventListener('click',(e)=>{
@@ -62,17 +60,16 @@ function onFormSubmit() {
 
 }
 if(s==0){
-  addAdminForm.addEventListener('submit',(e)=>{
+  addSortieForm.addEventListener('submit',(e)=>{
     e.preventDefault();
     fetch(url,{
       method:'POST',
       
       // mode: 'cors',  
       body: JSON.stringify({
-        email: email.value,
-        nom: nom.value,
-        pass: pass.value,
-        prenom: prenom.value
+        date: date.value,
+        description: description.value
+        
       }),
 
       headers:{
@@ -91,7 +88,7 @@ if(s==0){
 );
 }
 else{
-  addAdminForm.addEventListener('submit',(e)=>{
+  addSortieForm.addEventListener('submit',(e)=>{
     e.preventDefault();
   fetch(`${url}/${id}`,{
     method:'PUT',
@@ -102,10 +99,8 @@ else{
   },
     body: JSON.stringify({
   
-      nom: nom.value,
-      prenom: prenom.value,
-     // pass: pass.value,
-      email: email.value
+      date: date.value,
+      description: description.value
       
     }),
   }) 
@@ -122,9 +117,9 @@ function updateData(id){
   }) 
   .then(res => res.json())
   .then(data=>{
-    nom.value=data.nom,
-    prenom.value=data.prenom,
-    email.value=data.email
+    date.value=data.date,
+    description.value=data.description
+    
   })
   document.getElementById("submit").value ='Update';
   mod='update';

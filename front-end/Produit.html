@@ -94,7 +94,7 @@
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0">Muhammed</h6>
-                        <span>Admin</span>
+                        <span>sortie</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -223,17 +223,21 @@
           Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
         -->
         
-          <div >
-        <!--      <button id="alertBtn" class="btn btn-default">Ajouter</button>  -->
-            <a href="#modal" class="modal-open">Ajouter</a>
-          </div>
+        
 
           <table id="fresh-table" class="table">
+            <div >
+                <!--      <button id="alertBtn" class="btn btn-default">Ajouter</button>  -->
+                    <a href="#modal" class="modal-open">Ajouter</a>
+                  </div>
             <thead>
               <th data-field="id">ID</th>
-              <th data-field="name" data-sortable="true">Nom</th>
-              <th data-field="salary" data-sortable="true">Prenom</th>
-              <th data-field="country" data-sortable="true">Email</th>
+              <th data-field="name" data-sortable="true">code</th>
+              <th data-field="description" data-sortable="true">libelle</th>
+              <th data-field="description" data-sortable="true">prix</th>
+              <th data-field="description" data-sortable="true">date_Expiration</th>
+              <th data-field="description" data-sortable="true">quantite</th>
+              <th data-field="description" data-sortable="true">id_stock</th>
              
               <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
             </thead>
@@ -250,27 +254,35 @@
                 <br> <br>  <br>
                 <br>  <br> 
                 
-                <form class="add-admin-form" >
+                <form class="add-sortie-form" >
                     <div class="container-fluid pt-4 px-4">
                         <div class="form-floating mb-3">
-                          <div id="modal-footer"><a href="file:///C:/Users/HP/rim_services/front-end/blank.html" class="modal-close"><span class ="close"><span class=" glyphicon glyphicon-remove"></span>close</span> </a></div> </div> 
-                            <input type="text" class="form-control" id="nom" placeholder="Nom">
-                            <label for="floatingText">Nom</label>
+                          <div id="modal-footer"><a href="" class="modal-close"><span class ="close"><span class=" glyphicon glyphicon-remove"></span>close</span>
+                         </a></div>
+                         <div> 
+                            <input type="text" class="form-control" id="code" placeholder="code">
+                            <label for="floatingText">code</label>
+                        </div>
+                        <div> 
+                            <input type="text" class="form-control" id="libelle" placeholder="libelle">
+                            <label for="floatingText">libelle</label>
+                        </div>
+                         <div> 
+                            <input type="datetime-local" class="form-control" id="date_Expiration" placeholder="date_Expiration">
+                            <label for="floatingText">date_Expiration</label>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="quantite" placeholder="quantite">
+                            <label for="floatingText">quantite</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="prenom" placeholder="Prenom">
-                            <label for="floatingText">Prenom</label>
+                            <label for="pet-select">ID stock</label>
+                            <select name="pets" id="id_stock">
+                            <option class="id_stock" >--Please choose an option--</option>
+                            </select>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                       
-                        <div><input type="submit" id ="submit" name="submit" value="Create" class="btn btn-primary py-3 w-100 mb-4"><a href="file:///C:/Users/HP/rim_services/front-end/blank.html" class="modal-close"></a>Ajouter</a></div>
+                        <div><input type="submit" id ="submit" name="submit" value="Create" class="btn btn-primary py-3 w-100 mb-4"></div>
                     </form>
                     </div>
                 </div>
@@ -402,6 +414,6 @@
  
      <!-- Template Javascript -->
      <script src="js/main.js"></script>
-     <script src="js/script.js"></script>
+     <script src="js/scriptSortie.js"></script>
 
 </html>
